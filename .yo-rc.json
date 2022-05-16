@@ -1,0 +1,16 @@
+{
+  "generator-springboot": {
+    "appName": "e-canteen",
+    "packageName": "com.ecanteen",
+    "databaseType": "postgresql",
+    "dbMigrationTool": "liquibase",
+    "features": [
+      "elk",
+      "monitoring",
+      "localstack"
+    ],
+    "buildTool": "gradle",
+    "packageFolder": "com/ecanteen",
+    "liquibaseMigrationCounter": 1
+  }
+}
