@@ -1,0 +1,245 @@
+
+//entity Worker { // any institution we'll be dealing with
+//	name String,
+//    address String,
+//    regNo String,
+//    isApproved Boolean,
+//    comment String,
+//    imageUrl String,
+//    createdDate ZonedDateTime,
+//    modifiedDate ZonedDateTime,
+//    createdBy String,
+//    modifiedBy String
+//}
+
+entity User {
+	fullName String,
+    email String,
+    phoneNumber String,
+    address String,
+    imageUrl String,
+    isEnabled Boolean,
+    phoneVerified Boolean,
+    emailVerified Boolean,
+    kkUseId String,
+    role ROLE,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String,
+}
+
+//entity Parent {
+//fullName String,
+//   email String,
+//   phoneNumber String,
+//   address String,
+//   imageUrl String,
+//   isEnabled Boolean,
+//   phoneVerified Boolean,
+//   emailVerified Boolean,
+//   kkUseId String,
+//   createdDate ZonedDateTime,
+//   modifiedDate ZonedDateTime,
+//   createdBy String,
+//   modifiedBy String,
+//   role ROLE,
+//
+
+//entity Student {
+//	fullName String,
+//    email String,
+//    phoneNumber String,
+//    address String,
+//    imageUrl String,
+//    isEnabled Boolean,
+//    phoneVerified Boolean,
+//    emailVerified Boolean,
+//    kkUseId String,
+//    createdDate ZonedDateTime,
+//    modifiedDate ZonedDateTime,
+//    createdBy String,
+//    modifiedBy String,
+//    role ROLE,
+//}
+
+entity School {
+	name String,
+    email String,
+    phoneNumber String,
+    address String,
+    kkUseId String,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String,
+    role ROLE,
+}
+
+//entity UserGroup {
+//    name String,
+//    code String
+//}
+
+entity Product { //Food
+    name String,
+    price Double,
+    barcode String,
+    grade Rating,
+    category Category,
+    imageUrl String,
+    expiryDate ZonedDateTime,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String
+}
+
+entity ProductCategory { //Food Category
+    name String,
+    code String,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String,
+}
+
+entity NotificationHistory {
+    date ZonedDateTime,
+    status NotificationStatus,
+    method NotificationMethod
+}
+
+entity ActivationCode {
+    code String,
+    expiryTime String,
+    createdDate ZonedDateTime,
+    createdBy String
+}
+
+//entity UserCredential {
+//   userName String,
+//   createdDate ZonedDateTime
+//}
+
+entity Transaction {
+   transactionId String,
+   transactionStatus TransactionStatus,
+   orderNumber String,
+   paymentMethod PaymentMethod,
+   createdDate ZonedDateTime,
+   modifiedDate ZonedDateTime
+}
+
+entity Order {
+   orderNumber String,
+   ordrerCode String,
+   createdDate ZonedDateTime,
+   modifiedDate ZonedDateTime
+}
+
+entity Menu {
+   name String,
+   code String,
+   createdDate ZonedDateTime,
+   modifiedDate ZonedDateTime
+}
+
+entity Account{
+ accountNumber String,
+ accountName String,
+ createdDate ZonedDateTime,
+ modifiedDate ZonedDateTime
+}
+
+enum ROLE {
+    ROLE_SCHOOL,
+    ROLE_STUDENT,
+    ROLE_MANAGER,
+    ROLE_PARENT,
+    ROLE_WORKER // whoever working in the canteen / cafeteria , etc
+}
+
+enum Category {
+	PIZA,
+	SANDWICH,
+	DRINK,
+	EATS,
+	OTHER
+}
+
+enum Rating {
+	POOR,
+	FAIR,
+	GOOD,
+	VERY_GOOD,
+	EXCELLENT
+}
+
+enum PaymentMethod {
+	CARD, CASH
+}
+
+enum TransactionStatus {
+    SUCCESSFUL, FAILED, PENDING, REFUNDED
+}
+
+enum NotificationStatus {
+    SENT, DELIVERED, SEEN, FAILED
+}
+
+enum NotificationMethod {
+    EMAIL, NOTIFICATION, SMS
+}
+
+relationship OneToMany {
+   //Customer{user} to User {customer}
+   //User {parent} to User {student}
+   //ProductCategory {productCategoryItem} to ProductCategory {productCategory}
+   //User {parent} to Product {worker}
+   //Product {notificationHistory} to NotificationHistory {product}
+   //User {product} to Product {worker}
+   //User {activationCode} to ActivationCode {user}
+   //User {userCredential} to UserCredential {user}
+   //Product {transaction} to Transaction {product}
+   //User {order} to Order {ordredBy}
+   //User {order} to Order {ordredTo}
+   Product {order} to Order {product}
+   User{parent} to User{student}
+   User{parent} to School{school}
+   School{school} to User{parent}
+   School{school} to User{student}
+   ProductCategory{productCategoryItem} to Product{productItem}
+   User{parent} to User{worker}
+   User{worker} to Product{productItem}
+   Menu{menu} to Product{productItem}
+   User{parent} to ActivationCode{parentActivationCode}
+   User{worker} to ActivationCode{workerActivationCode}
+   //User{parent} to UserCredential{parentCredential}
+   //User{worker} to UserCredential{workerCredential}
+   User{parent} to NotificationHistory{parentNotificationHistory}
+   User{student} to Order{order}
+   User{parent} to Transaction{transaction}
+   User{student} to Order{order}
+   User{worker} to School{school}
+}
+
+relationship OneToOne {
+   Product{productcategory} to ProductCategory{product}
+   User{school} to User{worker}
+   User{worker} to Menu{menu}
+   User{parent} to Account{account}
+}
+
+//relationship ManyToMany {
+//   UserGroup {user} to User {userGroup}
+//   Menu {product} to Product {menu}
+//}
+
+filter
+User,
+School,
+Product
+paginate * with pagination
+dto * with mapstruct
+service * with serviceImpl
