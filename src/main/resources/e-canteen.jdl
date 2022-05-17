@@ -1,20 +1,54 @@
 
-entity Worker { // any institution we'll be dealing with
-	name String,
+//entity Worker { // any institution we'll be dealing with
+//	name String,
+//    address String,
+//    regNo String,
+//    isApproved Boolean,
+//    comment String,
+//    imageUrl String,
+//    createdDate ZonedDateTime,
+//    modifiedDate ZonedDateTime,
+//    createdBy String,
+//    modifiedBy String
+//}
+
+entity User {
+	fullName String,
+    email String,
+    phoneNumber String,
     address String,
-    regNo String,
-    isApproved Boolean,
-    comment String,
     imageUrl String,
+    isEnabled Boolean,
+    phoneVerified Boolean,
+    emailVerified Boolean,
+    kkUseId String,
+    role ROLE,
     createdDate ZonedDateTime,
     modifiedDate ZonedDateTime,
     createdBy String,
-    modifiedBy String
+    modifiedBy String,
 }
 
-//entity User {
+//entity Parent {
+//fullName String,
+//   email String,
+//   phoneNumber String,
+//   address String,
+//   imageUrl String,
+//   isEnabled Boolean,
+//   phoneVerified Boolean,
+//   emailVerified Boolean,
+//   kkUseId String,
+//   createdDate ZonedDateTime,
+//   modifiedDate ZonedDateTime,
+//   createdBy String,
+//   modifiedBy String,
+//   role ROLE,
+//
+
+//entity Student {
 //	fullName String,
-//  email String,
+//    email String,
 //    phoneNumber String,
 //    address String,
 //    imageUrl String,
@@ -22,46 +56,12 @@ entity Worker { // any institution we'll be dealing with
 //    phoneVerified Boolean,
 //    emailVerified Boolean,
 //    kkUseId String,
-//    role ROLE,
 //    createdDate ZonedDateTime,
 //    modifiedDate ZonedDateTime,
 //    createdBy String,
 //    modifiedBy String,
+//    role ROLE,
 //}
-
-entity Parent {
-	fullName String,
-    email String,
-    phoneNumber String,
-    address String,
-    imageUrl String,
-    isEnabled Boolean,
-    phoneVerified Boolean,
-    emailVerified Boolean,
-    kkUseId String,
-    createdDate ZonedDateTime,
-    modifiedDate ZonedDateTime,
-    createdBy String,
-    modifiedBy String,
-    role ROLE,
-}
-
-entity Student {
-	fullName String,
-    email String,
-    phoneNumber String,
-    address String,
-    imageUrl String,
-    isEnabled Boolean,
-    phoneVerified Boolean,
-    emailVerified Boolean,
-    kkUseId String,
-    createdDate ZonedDateTime,
-    modifiedDate ZonedDateTime,
-    createdBy String,
-    modifiedBy String,
-    role ROLE,
-}
 
 entity School {
 	name String,
@@ -76,16 +76,16 @@ entity School {
     role ROLE,
 }
 
-entity UserGroup {
-    name String,
-    code String
-}
+//entity UserGroup {
+//    name String,
+//    code String
+//}
 
 entity Product { //Food
     name String,
     price Double,
     barcode String,
-    grade Grade,
+    grade Rating,
     category Category,
     imageUrl String,
     expiryDate ZonedDateTime,
@@ -117,10 +117,10 @@ entity ActivationCode {
     createdBy String
 }
 
-entity UserCredential {
-   userName String,
-   createdDate ZonedDateTime
-}
+//entity UserCredential {
+//   userName String,
+//   createdDate ZonedDateTime
+//}
 
 entity Transaction {
    transactionId String,
@@ -168,7 +168,7 @@ enum Category {
 	OTHER
 }
 
-enum Grade {
+enum Rating {
 	POOR,
 	FAIR,
 	GOOD,
@@ -205,30 +205,30 @@ relationship OneToMany {
    //User {order} to Order {ordredBy}
    //User {order} to Order {ordredTo}
    Product {order} to Order {product}
-   Parent{parent} to Student{student}
-   Parent{parent} to School{school}
-   School{school} to Parent{parent}
-   School{school} to Student{student}
+   User{parent} to User{student}
+   User{parent} to School{school}
+   School{school} to User{parent}
+   School{school} to User{student}
    ProductCategory{productCategoryItem} to Product{productItem}
-   Parent{parent} to Worker{worker}
-   Worker{worker} to Product{productItem}
+   User{parent} to User{worker}
+   User{worker} to Product{productItem}
    Menu{menu} to Product{productItem}
-   Parent{parent} to ActivationCode{parentActivationCode}
-   Worker{worker} to ActivationCode{workerActivationCode}
-   Parent{parent} to UserCredential{parentCredential}
-   Worker{worker} to UserCredential{workerCredential}
-   Parent{parent} to NotificationHistory{parentNotificationHistory}
-   Student{student} to Order{order}
-   Parent{parent} to Transaction{transaction}
-   Worker{student} to Order{order}
-   Worker{worker} to School{school}
+   User{parent} to ActivationCode{parentActivationCode}
+   User{worker} to ActivationCode{workerActivationCode}
+   //User{parent} to UserCredential{parentCredential}
+   //User{worker} to UserCredential{workerCredential}
+   User{parent} to NotificationHistory{parentNotificationHistory}
+   User{student} to Order{order}
+   User{parent} to Transaction{transaction}
+   User{student} to Order{order}
+   User{worker} to School{school}
 }
 
 relationship OneToOne {
    Product{productcategory} to ProductCategory{product}
-   School{school} to Worker{worker}
-   Worker{worker} to Menu{menu}
-   Parent{parent} to Account{account}
+   User{school} to User{worker}
+   User{worker} to Menu{menu}
+   User{parent} to Account{account}
 }
 
 //relationship ManyToMany {
@@ -237,10 +237,8 @@ relationship OneToOne {
 //}
 
 filter
-Worker,
-Parent,
+User,
 School,
-Student,
 Product
 paginate * with pagination
 dto * with mapstruct
