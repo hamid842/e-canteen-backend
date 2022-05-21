@@ -1,0 +1,37 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521164045",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "notification_history",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "NotificationStatus",
+      "fieldValues": "SENT,DELIVERED,SEEN,FAILED"
+    },
+    {
+      "fieldName": "method",
+      "fieldType": "NotificationMethod",
+      "fieldValues": "EMAIL,NOTIFICATION,SMS"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "NotificationHistory",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "parentNotifcations",
+      "relationshipName": "parentNotificationHistory",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

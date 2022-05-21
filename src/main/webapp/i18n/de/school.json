@@ -1,0 +1,38 @@
+{
+  "eCanteenApp": {
+    "school": {
+      "home": {
+        "title": "Schools",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "School erstellen",
+        "createOrEditLabel": "School erstellen oder bearbeiten",
+        "notFound": "Keine Schools gefunden"
+      },
+      "created": "School erstellt mit ID {{ param }}",
+      "updated": "School aktualisiert mit ID {{ param }}",
+      "deleted": "School gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll School {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "School"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "kkUseId": "Kk Use Id",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "createdBy": "Created By",
+      "modifiedBy": "Modified By",
+      "role": "Role",
+      "everySchool": "Every School",
+      "studentSchool": "Student School",
+      "eachSchool": "Each School",
+      "school": "School",
+      "schools": "Schools"
+    }
+  }
+}

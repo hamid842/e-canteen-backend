@@ -1,0 +1,179 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521163545",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "canteen_user",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isEnabled",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "phoneVerified",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "emailVerified",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "kkUseId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "ROLE",
+      "fieldValues": "ROLE_SCHOOL,ROLE_STUDENT,ROLE_MANAGER,ROLE_PARENT,ROLE_WORKER"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "CanteenUser",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "menu",
+      "otherEntityRelationshipName": "everyMenu",
+      "ownerSide": true,
+      "relationshipName": "everyWorkerAtSchool",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "userAccount",
+      "otherEntityRelationshipName": "everyAccount",
+      "ownerSide": true,
+      "relationshipName": "everyParent",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "children",
+      "relationshipName": "parentOfChildren",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "school",
+      "otherEntityRelationshipName": "school",
+      "relationshipName": "eachParent",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "workers",
+      "relationshipName": "eachStusentParent",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "productItemsList",
+      "relationshipName": "eachWorker",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "activationCode",
+      "otherEntityRelationshipName": "parentActivationCode",
+      "relationshipName": "parentCode",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "activationCode",
+      "otherEntityRelationshipName": "workerActivationCode",
+      "relationshipName": "workerCode",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "notificationHistory",
+      "otherEntityRelationshipName": "parentNotificationHistory",
+      "relationshipName": "parentNotifcations",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "userOrder",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "eachStudent",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "parentTransactions",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "school",
+      "otherEntityRelationshipName": "schools",
+      "relationshipName": "workerAtSchool",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "school",
+      "otherEntityRelationshipName": "everySchool",
+      "ownerSide": false,
+      "relationshipName": "everyWorker",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "parentOfChildren",
+      "relationshipName": "children",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "school",
+      "otherEntityRelationshipName": "studentSchool",
+      "relationshipName": "parents",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "school",
+      "otherEntityRelationshipName": "eachSchool",
+      "relationshipName": "students",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "eachStusentParent",
+      "relationshipName": "workers",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

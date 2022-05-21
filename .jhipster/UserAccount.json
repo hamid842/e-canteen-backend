@@ -1,0 +1,44 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521164245",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "user_account",
+  "fields": [
+    {
+      "fieldName": "accountNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "walletBalance",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserAccount",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "everyParent",
+      "ownerSide": false,
+      "relationshipName": "everyAccount",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

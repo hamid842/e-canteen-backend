@@ -1,0 +1,46 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521163945",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "menu",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Menu",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "menu",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "everyWorkerAtSchool",
+      "ownerSide": false,
+      "relationshipName": "everyMenu",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

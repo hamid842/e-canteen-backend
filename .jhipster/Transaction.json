@@ -1,0 +1,49 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521164345",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "transaction",
+  "fields": [
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transactionStatus",
+      "fieldType": "TransactionStatus",
+      "fieldValues": "SUCCESSFUL,FAILED,PENDING,REFUNDED"
+    },
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "PaymentMethod",
+      "fieldValues": "CARD,CASH"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Transaction",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "parentTransactions",
+      "relationshipName": "transactions",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

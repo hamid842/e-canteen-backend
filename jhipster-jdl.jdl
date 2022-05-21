@@ -1,0 +1,189 @@
+entity CanteenUser {
+	fullName String,
+    email String,
+    phoneNumber String,
+    address String,
+    imageUrl String,
+    isEnabled Boolean,
+    phoneVerified Boolean,
+    emailVerified Boolean,
+    kkUseId String,
+    role ROLE,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String,
+}
+
+entity School {
+	name String,
+    email String,
+    phoneNumber String,
+    address String,
+    kkUseId String,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String,
+    role ROLE,
+}
+
+entity Product { //Food
+    name String,
+    price BigDecimal,
+    barcode String,
+    grade Rating,
+    category Category,
+    imageUrl String,
+    expiryDate ZonedDateTime,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String
+}
+
+entity ProductCategory { //Food Category
+    name String,
+    code String,
+    createdDate ZonedDateTime,
+    modifiedDate ZonedDateTime,
+    createdBy String,
+    modifiedBy String,
+}
+
+entity NotificationHistory {
+    date ZonedDateTime,
+    status NotificationStatus,
+    method NotificationMethod
+}
+
+entity ActivationCode {
+    code String,
+    expiryTime String,
+    createdDate ZonedDateTime,
+    createdBy String
+}
+
+entity Transaction {
+   transactionId String,
+   transactionStatus TransactionStatus,
+   orderNumber String,
+   paymentMethod PaymentMethod,
+   createdDate ZonedDateTime,
+   modifiedDate ZonedDateTime
+}
+
+entity UserOrder {
+   orderNumber String,
+   ordrerCode String,
+   createdDate ZonedDateTime,
+   modifiedDate ZonedDateTime
+}
+
+entity Menu {
+   name String,
+   code String,
+   createdDate ZonedDateTime,
+   modifiedDate ZonedDateTime
+}
+
+entity UserAccount{
+ accountNumber String,
+ accountName String,
+ walletBalance BigDecimal,
+ createdDate ZonedDateTime,
+ modifiedDate ZonedDateTime
+}
+
+enum ROLE {
+    ROLE_SCHOOL,
+    ROLE_STUDENT,
+    ROLE_MANAGER,
+    ROLE_PARENT,
+    ROLE_WORKER // whoever working in the canteen / cafeteria , etc
+}
+
+enum Category {
+	PIZA,
+	SANDWICH,
+	DRINK,
+	EATS,
+	OTHER
+}
+
+enum Rating {
+	POOR,
+	FAIR,
+	GOOD,
+	VERY_GOOD,
+	EXCELLENT
+}
+
+enum PaymentMethod {
+	CARD, CASH
+}
+
+enum TransactionStatus {
+    SUCCESSFUL, FAILED, PENDING, REFUNDED
+}
+
+enum NotificationStatus {
+    SENT, DELIVERED, SEEN, FAILED
+}
+
+enum NotificationMethod {
+    EMAIL, NOTIFICATION, SMS
+}
+
+relationship OneToMany {
+   UserOrder {userOrderList} to Product {productItem} 
+   CanteenUser{parentOfChildren} to CanteenUser{children}
+   CanteenUser{eachParent} to School{school}
+   School{studentSchool} to CanteenUser{parents}
+   School{eachSchool} to CanteenUser{students}
+   ProductCategory{productCategoryItem} to Product{product}
+   CanteenUser{eachStusentParent} to CanteenUser{workers}
+   CanteenUser{eachWorker} to Product{productItemsList}
+   Menu{menu} to Product{products}
+   CanteenUser{parentCode} to ActivationCode{parentActivationCode}
+   CanteenUser{workerCode} to ActivationCode{workerActivationCode}
+   CanteenUser{parentNotifcations} to NotificationHistory{parentNotificationHistory}
+   CanteenUser{eachStudent} to UserOrder{orders}
+   CanteenUser{parentTransactions} to Transaction{transactions}
+   CanteenUser{workerAtSchool} to School{schools}
+}
+
+relationship OneToOne {
+   Product{everyProductCategory} to ProductCategory{everyProduct}
+   School{everySchool} to CanteenUser{everyWorker}
+   CanteenUser{everyWorkerAtSchool} to Menu{everyMenu}
+   CanteenUser{everyParent} to UserAccount{everyAccount}
+}
+
+application {
+ config {
+  databaseType sql
+  baseName eCanteen
+  applicationType monolith
+  serverPort 8080
+  authenticationType oauth2
+  buildTool gradle
+  clientFramework react
+  enableHibernateCache false
+  languages [en,de]
+  nativeLanguage en
+  packageName com.mycompany.myapp
+  prodDatabaseType postgresql
+  devDatabaseType postgresql
+  enableHibernateCache false
+ }
+ entities CanteenUser, School, ProductCategory, Product, Menu, NotificationHistory, ActivationCode, UserAccount, Transaction, UserOrder
+ filter CanteenUser, School, Product
+ dto * with mapstruct
+ service * with serviceImpl
+ paginate * with pagination
+}
+
+
+
+

@@ -1,0 +1,11 @@
+{
+  "eCanteenApp": {
+    "NotificationStatus": {
+      "null": "",
+      "SENT": "SENT",
+      "DELIVERED": "DELIVERED",
+      "SEEN": "SEEN",
+      "FAILED": "FAILED"
+    }
+  }
+}

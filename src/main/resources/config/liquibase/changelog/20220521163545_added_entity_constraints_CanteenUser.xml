@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity CanteenUser.
+    -->
+    <changeSet id="20220521163545-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="every_worker_at_school_id"
+                                 baseTableName="canteen_user"
+                                 constraintName="fk_canteen_user__every_worker_at_school_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="menu"/>
+
+        <addForeignKeyConstraint baseColumnNames="every_parent_id"
+                                 baseTableName="canteen_user"
+                                 constraintName="fk_canteen_user__every_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+
+        <addForeignKeyConstraint baseColumnNames="children_id"
+                                 baseTableName="canteen_user"
+                                 constraintName="fk_canteen_user__children_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="canteen_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="parents_id"
+                                 baseTableName="canteen_user"
+                                 constraintName="fk_canteen_user__parents_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="school"/>
+
+        <addForeignKeyConstraint baseColumnNames="students_id"
+                                 baseTableName="canteen_user"
+                                 constraintName="fk_canteen_user__students_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="school"/>
+
+        <addForeignKeyConstraint baseColumnNames="workers_id"
+                                 baseTableName="canteen_user"
+                                 constraintName="fk_canteen_user__workers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="canteen_user"/>
+    </changeSet>
+</databaseChangeLog>

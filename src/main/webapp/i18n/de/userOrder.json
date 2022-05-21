@@ -1,0 +1,29 @@
+{
+  "eCanteenApp": {
+    "userOrder": {
+      "home": {
+        "title": "User Orders",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "User Order erstellen",
+        "createOrEditLabel": "User Order erstellen oder bearbeiten",
+        "notFound": "Keine User Orders gefunden"
+      },
+      "created": "User Order erstellt mit ID {{ param }}",
+      "updated": "User Order aktualisiert mit ID {{ param }}",
+      "deleted": "User Order gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll User Order {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "User Order"
+      },
+      "id": "ID",
+      "orderNumber": "Order Number",
+      "ordrerCode": "Ordrer Code",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "userOrderList": "User Order List",
+      "orders": "Orders"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "eCanteenApp": {
+    "NotificationMethod": {
+      "null": "",
+      "EMAIL": "EMAIL",
+      "NOTIFICATION": "NOTIFICATION",
+      "SMS": "SMS"
+    }
+  }
+}

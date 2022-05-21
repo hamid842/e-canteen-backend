@@ -1,0 +1,94 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521163845",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "product",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "barcode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "grade",
+      "fieldType": "Rating",
+      "fieldValues": "POOR,FAIR,GOOD,VERY_GOOD,EXCELLENT"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "Category",
+      "fieldValues": "PIZA,SANDWICH,DRINK,EATS,OTHER"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expiryDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Product",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "productCategory",
+      "otherEntityRelationshipName": "everyProduct",
+      "ownerSide": true,
+      "relationshipName": "everyProductCategory",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "userOrder",
+      "otherEntityRelationshipName": "userOrderList",
+      "relationshipName": "productItem",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "productCategory",
+      "otherEntityRelationshipName": "productCategoryItem",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "eachWorker",
+      "relationshipName": "productItemsList",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "menu",
+      "otherEntityRelationshipName": "menu",
+      "relationshipName": "products",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

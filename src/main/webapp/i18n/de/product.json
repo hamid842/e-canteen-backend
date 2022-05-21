@@ -1,0 +1,39 @@
+{
+  "eCanteenApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Product erstellen",
+        "createOrEditLabel": "Product erstellen oder bearbeiten",
+        "notFound": "Keine Products gefunden"
+      },
+      "created": "Product erstellt mit ID {{ param }}",
+      "updated": "Product aktualisiert mit ID {{ param }}",
+      "deleted": "Product gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Product {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "name": "Name",
+      "price": "Price",
+      "barcode": "Barcode",
+      "grade": "Grade",
+      "category": "Category",
+      "imageUrl": "Image Url",
+      "expiryDate": "Expiry Date",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "createdBy": "Created By",
+      "modifiedBy": "Modified By",
+      "everyProductCategory": "Every Product Category",
+      "productItem": "Product Item",
+      "product": "Product",
+      "productItemsList": "Product Items List",
+      "products": "Products"
+    }
+  }
+}

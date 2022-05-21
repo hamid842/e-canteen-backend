@@ -1,0 +1,12 @@
+{
+  "eCanteenApp": {
+    "Rating": {
+      "null": "",
+      "POOR": "POOR",
+      "FAIR": "FAIR",
+      "GOOD": "GOOD",
+      "VERY_GOOD": "VERY_GOOD",
+      "EXCELLENT": "EXCELLENT"
+    }
+  }
+}

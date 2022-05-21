@@ -1,0 +1,29 @@
+{
+  "eCanteenApp": {
+    "userAccount": {
+      "home": {
+        "title": "User Accounts",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "User Account erstellen",
+        "createOrEditLabel": "User Account erstellen oder bearbeiten",
+        "notFound": "Keine User Accounts gefunden"
+      },
+      "created": "User Account erstellt mit ID {{ param }}",
+      "updated": "User Account aktualisiert mit ID {{ param }}",
+      "deleted": "User Account gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll User Account {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "User Account"
+      },
+      "id": "ID",
+      "accountNumber": "Account Number",
+      "accountName": "Account Name",
+      "walletBalance": "Wallet Balance",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "everyAccount": "Every Account"
+    }
+  }
+}

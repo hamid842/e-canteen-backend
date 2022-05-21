@@ -1,0 +1,89 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521163645",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "school",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkUseId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "ROLE",
+      "fieldValues": "ROLE_SCHOOL,ROLE_STUDENT,ROLE_MANAGER,ROLE_PARENT,ROLE_WORKER"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "School",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "everyWorker",
+      "ownerSide": true,
+      "relationshipName": "everySchool",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "parents",
+      "relationshipName": "studentSchool",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "students",
+      "relationshipName": "eachSchool",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "eachParent",
+      "relationshipName": "school",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "workerAtSchool",
+      "relationshipName": "schools",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

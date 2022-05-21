@@ -1,0 +1,54 @@
+{
+  "eCanteenApp": {
+    "canteenUser": {
+      "home": {
+        "title": "Canteen Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Canteen User",
+        "createOrEditLabel": "Create or edit a Canteen User",
+        "notFound": "No Canteen Users found"
+      },
+      "created": "A new Canteen User is created with identifier {{ param }}",
+      "updated": "A Canteen User is updated with identifier {{ param }}",
+      "deleted": "A Canteen User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Canteen User {{ id }}?"
+      },
+      "detail": {
+        "title": "Canteen User"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "imageUrl": "Image Url",
+      "isEnabled": "Is Enabled",
+      "phoneVerified": "Phone Verified",
+      "emailVerified": "Email Verified",
+      "kkUseId": "Kk Use Id",
+      "role": "Role",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "createdBy": "Created By",
+      "modifiedBy": "Modified By",
+      "everyWorkerAtSchool": "Every Worker At School",
+      "everyParent": "Every Parent",
+      "parentOfChildren": "Parent Of Children",
+      "eachParent": "Each Parent",
+      "eachStusentParent": "Each Stusent Parent",
+      "eachWorker": "Each Worker",
+      "parentCode": "Parent Code",
+      "workerCode": "Worker Code",
+      "parentNotifcations": "Parent Notifcations",
+      "eachStudent": "Each Student",
+      "parentTransactions": "Parent Transactions",
+      "workerAtSchool": "Worker At School",
+      "everyWorker": "Every Worker",
+      "children": "Children",
+      "parents": "Parents",
+      "students": "Students",
+      "workers": "Workers"
+    }
+  }
+}

@@ -1,0 +1,164 @@
+import React, { useState, useEffect } from 'react';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import { Button, Row, Col, FormText } from 'reactstrap';
+import { isNumber, Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
+import { mapIdList } from 'app/shared/util/entity-utils';
+import { useAppDispatch, useAppSelector } from 'app/config/store';
+
+import { IProduct } from 'app/shared/model/product.model';
+import { getEntities as getProducts } from 'app/entities/product/product.reducer';
+import { IProductCategory } from 'app/shared/model/product-category.model';
+import { getEntity, updateEntity, createEntity, reset } from './product-category.reducer';
+
+export const ProductCategoryUpdate = (props: RouteComponentProps<{ id: string }>) => {
+  const dispatch = useAppDispatch();
+
+  const [isNew] = useState(!props.match.params || !props.match.params.id);
+
+  const products = useAppSelector(state => state.product.entities);
+  const productCategoryEntity = useAppSelector(state => state.productCategory.entity);
+  const loading = useAppSelector(state => state.productCategory.loading);
+  const updating = useAppSelector(state => state.productCategory.updating);
+  const updateSuccess = useAppSelector(state => state.productCategory.updateSuccess);
+  const handleClose = () => {
+    props.history.push('/product-category' + props.location.search);
+  };
+
+  useEffect(() => {
+    if (isNew) {
+      dispatch(reset());
+    } else {
+      dispatch(getEntity(props.match.params.id));
+    }
+
+    dispatch(getProducts({}));
+  }, []);
+
+  useEffect(() => {
+    if (updateSuccess) {
+      handleClose();
+    }
+  }, [updateSuccess]);
+
+  const saveEntity = values => {
+    values.createdDate = convertDateTimeToServer(values.createdDate);
+    values.modifiedDate = convertDateTimeToServer(values.modifiedDate);
+
+    const entity = {
+      ...productCategoryEntity,
+      ...values,
+    };
+
+    if (isNew) {
+      dispatch(createEntity(entity));
+    } else {
+      dispatch(updateEntity(entity));
+    }
+  };
+
+  const defaultValues = () =>
+    isNew
+      ? {
+          createdDate: displayDefaultDateTime(),
+          modifiedDate: displayDefaultDateTime(),
+        }
+      : {
+          ...productCategoryEntity,
+          createdDate: convertDateTimeFromServer(productCategoryEntity.createdDate),
+          modifiedDate: convertDateTimeFromServer(productCategoryEntity.modifiedDate),
+        };
+
+  return (
+    <div>
+      <Row className="justify-content-center">
+        <Col md="8">
+          <h2 id="eCanteenApp.productCategory.home.createOrEditLabel" data-cy="ProductCategoryCreateUpdateHeading">
+            <Translate contentKey="eCanteenApp.productCategory.home.createOrEditLabel">Create or edit a ProductCategory</Translate>
+          </h2>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col md="8">
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
+              {!isNew ? (
+                <ValidatedField
+                  name="id"
+                  required
+                  readOnly
+                  id="product-category-id"
+                  label={translate('global.field.id')}
+                  validate={{ required: true }}
+                />
+              ) : null}
+              <ValidatedField
+                label={translate('eCanteenApp.productCategory.name')}
+                id="product-category-name"
+                name="name"
+                data-cy="name"
+                type="text"
+              />
+              <ValidatedField
+                label={translate('eCanteenApp.productCategory.code')}
+                id="product-category-code"
+                name="code"
+                data-cy="code"
+                type="text"
+              />
+              <ValidatedField
+                label={translate('eCanteenApp.productCategory.createdDate')}
+                id="product-category-createdDate"
+                name="createdDate"
+                data-cy="createdDate"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField
+                label={translate('eCanteenApp.productCategory.modifiedDate')}
+                id="product-category-modifiedDate"
+                name="modifiedDate"
+                data-cy="modifiedDate"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField
+                label={translate('eCanteenApp.productCategory.createdBy')}
+                id="product-category-createdBy"
+                name="createdBy"
+                data-cy="createdBy"
+                type="text"
+              />
+              <ValidatedField
+                label={translate('eCanteenApp.productCategory.modifiedBy')}
+                id="product-category-modifiedBy"
+                name="modifiedBy"
+                data-cy="modifiedBy"
+                type="text"
+              />
+              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/product-category" replace color="info">
+                <FontAwesomeIcon icon="arrow-left" />
+                &nbsp;
+                <span className="d-none d-md-inline">
+                  <Translate contentKey="entity.action.back">Back</Translate>
+                </span>
+              </Button>
+              &nbsp;
+              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                <FontAwesomeIcon icon="save" />
+                &nbsp;
+                <Translate contentKey="entity.action.save">Save</Translate>
+              </Button>
+            </ValidatedForm>
+          )}
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
+export default ProductCategoryUpdate;

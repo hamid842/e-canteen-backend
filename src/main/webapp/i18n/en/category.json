@@ -1,0 +1,12 @@
+{
+  "eCanteenApp": {
+    "Category": {
+      "null": "",
+      "PIZA": "PIZA",
+      "SANDWICH": "SANDWICH",
+      "DRINK": "DRINK",
+      "EATS": "EATS",
+      "OTHER": "OTHER"
+    }
+  }
+}

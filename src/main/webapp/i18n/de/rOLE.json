@@ -1,0 +1,12 @@
+{
+  "eCanteenApp": {
+    "ROLE": {
+      "null": "",
+      "ROLE_SCHOOL": "ROLE_SCHOOL",
+      "ROLE_STUDENT": "ROLE_STUDENT",
+      "ROLE_MANAGER": "ROLE_MANAGER",
+      "ROLE_PARENT": "ROLE_PARENT",
+      "ROLE_WORKER": "ROLE_WORKER"
+    }
+  }
+}

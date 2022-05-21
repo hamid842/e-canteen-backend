@@ -1,0 +1,9 @@
+{
+  "eCanteenApp": {
+    "PaymentMethod": {
+      "null": "",
+      "CARD": "CARD",
+      "CASH": "CASH"
+    }
+  }
+}

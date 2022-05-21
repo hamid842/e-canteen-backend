@@ -1,0 +1,11 @@
+{
+  "eCanteenApp": {
+    "TransactionStatus": {
+      "null": "",
+      "SUCCESSFUL": "SUCCESSFUL",
+      "FAILED": "FAILED",
+      "PENDING": "PENDING",
+      "REFUNDED": "REFUNDED"
+    }
+  }
+}

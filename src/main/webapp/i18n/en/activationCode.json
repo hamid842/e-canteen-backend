@@ -1,0 +1,29 @@
+{
+  "eCanteenApp": {
+    "activationCode": {
+      "home": {
+        "title": "Activation Codes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Activation Code",
+        "createOrEditLabel": "Create or edit a Activation Code",
+        "notFound": "No Activation Codes found"
+      },
+      "created": "A new Activation Code is created with identifier {{ param }}",
+      "updated": "A Activation Code is updated with identifier {{ param }}",
+      "deleted": "A Activation Code is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Activation Code {{ id }}?"
+      },
+      "detail": {
+        "title": "Activation Code"
+      },
+      "id": "ID",
+      "code": "Code",
+      "expiryTime": "Expiry Time",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "parentActivationCode": "Parent Activation Code",
+      "workerActivationCode": "Worker Activation Code"
+    }
+  }
+}

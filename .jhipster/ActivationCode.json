@@ -1,0 +1,45 @@
+{
+  "applications": ["eCanteen"],
+  "changelogDate": "20220521164145",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "activation_code",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expiryTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ActivationCode",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "parentCode",
+      "relationshipName": "parentActivationCode",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "canteenUser",
+      "otherEntityRelationshipName": "workerCode",
+      "relationshipName": "workerActivationCode",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

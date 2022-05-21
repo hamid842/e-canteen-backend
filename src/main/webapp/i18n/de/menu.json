@@ -1,0 +1,29 @@
+{
+  "eCanteenApp": {
+    "menu": {
+      "home": {
+        "title": "Menus",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Menu erstellen",
+        "createOrEditLabel": "Menu erstellen oder bearbeiten",
+        "notFound": "Keine Menus gefunden"
+      },
+      "created": "Menu erstellt mit ID {{ param }}",
+      "updated": "Menu aktualisiert mit ID {{ param }}",
+      "deleted": "Menu gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Menu {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Menu"
+      },
+      "id": "ID",
+      "name": "Name",
+      "code": "Code",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "menu": "Menu",
+      "everyMenu": "Every Menu"
+    }
+  }
+}

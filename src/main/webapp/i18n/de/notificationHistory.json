@@ -1,0 +1,27 @@
+{
+  "eCanteenApp": {
+    "notificationHistory": {
+      "home": {
+        "title": "Notification Histories",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Notification History erstellen",
+        "createOrEditLabel": "Notification History erstellen oder bearbeiten",
+        "notFound": "Keine Notification Histories gefunden"
+      },
+      "created": "Notification History erstellt mit ID {{ param }}",
+      "updated": "Notification History aktualisiert mit ID {{ param }}",
+      "deleted": "Notification History gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Notification History {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Notification History"
+      },
+      "id": "ID",
+      "date": "Date",
+      "status": "Status",
+      "method": "Method",
+      "parentNotificationHistory": "Parent Notification History"
+    }
+  }
+}

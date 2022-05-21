@@ -1,0 +1,27 @@
+{
+  "eCanteenApp": {
+    "notificationHistory": {
+      "home": {
+        "title": "Notification Histories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Notification History",
+        "createOrEditLabel": "Create or edit a Notification History",
+        "notFound": "No Notification Histories found"
+      },
+      "created": "A new Notification History is created with identifier {{ param }}",
+      "updated": "A Notification History is updated with identifier {{ param }}",
+      "deleted": "A Notification History is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Notification History {{ id }}?"
+      },
+      "detail": {
+        "title": "Notification History"
+      },
+      "id": "ID",
+      "date": "Date",
+      "status": "Status",
+      "method": "Method",
+      "parentNotificationHistory": "Parent Notification History"
+    }
+  }
+}
